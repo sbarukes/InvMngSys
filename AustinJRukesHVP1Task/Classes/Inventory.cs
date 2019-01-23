@@ -56,7 +56,7 @@ namespace AustinJRukesHVP1Task.Classes
             ProductInventory.Add(product);
         }
 
-        public static void removeProduct(Product product)
+        public static void deleteProduct(Product product)
         {
             ProductInventory.Remove(product);
         }

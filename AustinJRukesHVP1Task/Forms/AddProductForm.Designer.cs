@@ -48,12 +48,14 @@
             this.addProductSaveButton = new System.Windows.Forms.Button();
             this.addProductCancelButton = new System.Windows.Forms.Button();
             this.addProductDeleteRelationButton = new System.Windows.Forms.Button();
+            this.addProductAddRelationButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.addProductPartDataGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.addProductRelatedPArtsDataGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // addProductIDText
             // 
+            this.addProductIDText.Enabled = false;
             this.addProductIDText.Location = new System.Drawing.Point(137, 104);
             this.addProductIDText.Name = "addProductIDText";
             this.addProductIDText.Size = new System.Drawing.Size(100, 20);
@@ -219,11 +221,21 @@
             this.addProductDeleteRelationButton.Text = "Delete";
             this.addProductDeleteRelationButton.UseVisualStyleBackColor = true;
             // 
+            // addProductAddRelationButton
+            // 
+            this.addProductAddRelationButton.Location = new System.Drawing.Point(689, 222);
+            this.addProductAddRelationButton.Name = "addProductAddRelationButton";
+            this.addProductAddRelationButton.Size = new System.Drawing.Size(75, 23);
+            this.addProductAddRelationButton.TabIndex = 22;
+            this.addProductAddRelationButton.Text = "Add";
+            this.addProductAddRelationButton.UseVisualStyleBackColor = true;
+            // 
             // AddProductForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.addProductAddRelationButton);
             this.Controls.Add(this.addProductDeleteRelationButton);
             this.Controls.Add(this.addProductCancelButton);
             this.Controls.Add(this.addProductSaveButton);
@@ -275,5 +287,6 @@
         private System.Windows.Forms.Button addProductSaveButton;
         private System.Windows.Forms.Button addProductCancelButton;
         private System.Windows.Forms.Button addProductDeleteRelationButton;
+        private System.Windows.Forms.Button addProductAddRelationButton;
     }
 }

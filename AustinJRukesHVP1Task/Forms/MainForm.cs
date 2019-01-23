@@ -1,4 +1,5 @@
 ﻿using AustinJRukesHVP1Task.Classes;
+using AustinJRukesHVP1Task.Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -78,5 +79,38 @@ namespace AustinJRukesHVP1Task
             Inventory.deletePart((Part)partsDataGridView.CurrentRow.DataBoundItem);
         }
 
+        private void productsSearchButton_Click(object sender, EventArgs e)
+        {
+            Product searchedProduct = Inventory.lookupProduct(Convert.ToInt32(productsSearchTextbox.Text));
+        }
+
+        private void productsDeleteButton_Click(object sender, EventArgs e)
+        {
+            Inventory.deleteProduct((Product)partsDataGridView.CurrentRow.DataBoundItem);
+        }
+
+        private void productsAddButton_Click(object sender, EventArgs e)
+        {
+            AddProductForm aProductForm = new AddProductForm();
+            aProductForm.ShowDialog();
+        }
+
+        private void productsModifyButton_Click(object sender, EventArgs e)
+        {
+            ModifyProductForm mProductForm = new ModifyProductForm();
+            mProductForm.modifyProductIDText.Text = productsDataGridView.CurrentRow.Cells[0].Value.ToString();
+            mProductForm.modifyProductNameText.Text = productsDataGridView.CurrentRow.Cells[1].Value.ToString();
+            mProductForm.modifyProductInvAmtText.Text = productsDataGridView.CurrentRow.Cells[2].Value.ToString();
+            mProductForm.modifyProductPriceText.Text = productsDataGridView.CurrentRow.Cells[3].Value.ToString();
+            mProductForm.modifyProductMinText.Text = productsDataGridView.CurrentRow.Cells[4].Value.ToString();
+            mProductForm.modifyProductMaxText.Text = productsDataGridView.CurrentRow.Cells[5].Value.ToString();
+            mProductForm.ShowDialog();
+
+        }
+
+        private void exitAppButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

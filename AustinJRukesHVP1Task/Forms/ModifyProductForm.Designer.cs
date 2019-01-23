@@ -48,6 +48,7 @@
             this.modifyProductDeleteRelationButton = new System.Windows.Forms.Button();
             this.modifyProductSaveButton = new System.Windows.Forms.Button();
             this.modifyProductCancelButton = new System.Windows.Forms.Button();
+            this.modifyProductAddRelationButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.modifyProductPartDataGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.modifyProductRelatedPArtsDataGrid)).BeginInit();
             this.SuspendLayout();
@@ -136,6 +137,7 @@
             // 
             // modifyProductIDText
             // 
+            this.modifyProductIDText.Enabled = false;
             this.modifyProductIDText.Location = new System.Drawing.Point(146, 109);
             this.modifyProductIDText.Name = "modifyProductIDText";
             this.modifyProductIDText.Size = new System.Drawing.Size(100, 20);
@@ -219,11 +221,21 @@
             this.modifyProductCancelButton.Text = "Cancel";
             this.modifyProductCancelButton.UseVisualStyleBackColor = true;
             // 
+            // modifyProductAddRelationButton
+            // 
+            this.modifyProductAddRelationButton.Location = new System.Drawing.Point(698, 220);
+            this.modifyProductAddRelationButton.Name = "modifyProductAddRelationButton";
+            this.modifyProductAddRelationButton.Size = new System.Drawing.Size(75, 23);
+            this.modifyProductAddRelationButton.TabIndex = 38;
+            this.modifyProductAddRelationButton.Text = "Add";
+            this.modifyProductAddRelationButton.UseVisualStyleBackColor = true;
+            // 
             // ModifyProductForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.modifyProductAddRelationButton);
             this.Controls.Add(this.modifyProductCancelButton);
             this.Controls.Add(this.modifyProductSaveButton);
             this.Controls.Add(this.modifyProductDeleteRelationButton);
@@ -264,16 +276,17 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox modifyProductIDText;
-        private System.Windows.Forms.TextBox modifyProductNameText;
-        private System.Windows.Forms.TextBox modifyProductInvAmtText;
-        private System.Windows.Forms.TextBox modifyProductPriceText;
-        private System.Windows.Forms.TextBox modifyProductMaxText;
-        private System.Windows.Forms.TextBox modifyProductMinText;
         private System.Windows.Forms.DataGridView modifyProductPartDataGrid;
         private System.Windows.Forms.DataGridView modifyProductRelatedPArtsDataGrid;
         private System.Windows.Forms.Button modifyProductDeleteRelationButton;
         private System.Windows.Forms.Button modifyProductSaveButton;
         private System.Windows.Forms.Button modifyProductCancelButton;
+        private System.Windows.Forms.Button modifyProductAddRelationButton;
+        public System.Windows.Forms.TextBox modifyProductIDText;
+        public System.Windows.Forms.TextBox modifyProductNameText;
+        public System.Windows.Forms.TextBox modifyProductInvAmtText;
+        public System.Windows.Forms.TextBox modifyProductPriceText;
+        public System.Windows.Forms.TextBox modifyProductMaxText;
+        public System.Windows.Forms.TextBox modifyProductMinText;
     }
 }
