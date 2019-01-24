@@ -70,6 +70,7 @@
             this.modifyPartInhouseButton.TabStop = true;
             this.modifyPartInhouseButton.Text = "In-House";
             this.modifyPartInhouseButton.UseVisualStyleBackColor = true;
+            this.modifyPartInhouseButton.CheckedChanged += new System.EventHandler(this.modifyPartInhouseButton_CheckedChanged);
             // 
             // modifyPartOutsourcedButton
             // 
@@ -81,6 +82,7 @@
             this.modifyPartOutsourcedButton.TabStop = true;
             this.modifyPartOutsourcedButton.Text = "Outsourced";
             this.modifyPartOutsourcedButton.UseVisualStyleBackColor = true;
+            this.modifyPartOutsourcedButton.CheckedChanged += new System.EventHandler(this.modifyPartOutsourcedButton_CheckedChanged);
             // 
             // modifyPartIDText
             // 
@@ -139,6 +141,7 @@
             this.modifyPartSaveButton.TabIndex = 19;
             this.modifyPartSaveButton.Text = "Save";
             this.modifyPartSaveButton.UseVisualStyleBackColor = true;
+            this.modifyPartSaveButton.Click += new System.EventHandler(this.modifyPartSaveButton_Click);
             // 
             // modifyPartCancelButton
             // 
@@ -148,6 +151,7 @@
             this.modifyPartCancelButton.TabIndex = 20;
             this.modifyPartCancelButton.Text = "Cancel";
             this.modifyPartCancelButton.UseVisualStyleBackColor = true;
+            this.modifyPartCancelButton.Click += new System.EventHandler(this.modifyPartCancelButton_Click);
             // 
             // label2
             // 

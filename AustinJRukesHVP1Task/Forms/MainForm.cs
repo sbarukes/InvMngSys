@@ -22,10 +22,10 @@ namespace AustinJRukesHVP1Task
         {
             partsDataGridView.DataSource = Inventory.PartInventory;
             productsDataGridView.DataSource = Inventory.ProductInventory;
-            Inventory.PartInventory.Add(new InHouse(1, "New Part", 100, 20.10m, 10, 15, 135));
-            Inventory.PartInventory.Add(new InHouse(2, "New Part2", 100, 20.99m, 10, 15, 135));
-            Inventory.PartInventory.Add(new Outsourced(3, "New Part3", 100, 25.99m, 15, 50, "New Water Computing"));
-            Inventory.ProductInventory.Add(new Product(1, "New Product", 10, 20.00m, 1, 5));
+            Inventory.PartInventory.Add(new InHouse(0, "New Part", 100, 20.10m, 10, 15, 135));
+            Inventory.PartInventory.Add(new InHouse(1, "New Part2", 100, 20.99m, 10, 15, 135));
+            Inventory.PartInventory.Add(new Outsourced(2, "New Part3", 100, 25.99m, 15, 50, "New Water Computing"));
+            Inventory.ProductInventory.Add(new Product(0, "New Product", 10, 20.00m, 1, 5));
         }
 
         private void partsSearchButton_Click(object sender, EventArgs e)
@@ -45,7 +45,6 @@ namespace AustinJRukesHVP1Task
             mPartForm.modifyPartIDText.Enabled = false;
             if (partsDataGridView.CurrentRow.DataBoundItem is InHouse) {
                 mPartForm.modifyPartInhouseButton.Select();
-                mPartForm.modifyPartOutsourcedButton.Enabled = false;
                 mPartForm.modifyPartIDText.Text = partsDataGridView.CurrentRow.Cells[0].Value.ToString();
                 mPartForm.modifyPartNameText.Text = partsDataGridView.CurrentRow.Cells[1].Value.ToString();
                 mPartForm.modifyPartInvAmtText.Text = partsDataGridView.CurrentRow.Cells[2].Value.ToString();
@@ -59,7 +58,6 @@ namespace AustinJRukesHVP1Task
             else
             {
                 mPartForm.modifyPartOutsourcedButton.Select();
-                mPartForm.modifyPartInhouseButton.Enabled = false;
                 mPartForm.modifyPartIDText.Text = partsDataGridView.CurrentRow.Cells[0].Value.ToString();
                 mPartForm.modifyPartNameText.Text = partsDataGridView.CurrentRow.Cells[1].Value.ToString();
                 mPartForm.modifyPartInvAmtText.Text = partsDataGridView.CurrentRow.Cells[2].Value.ToString();

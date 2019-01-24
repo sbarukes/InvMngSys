@@ -30,7 +30,7 @@ namespace AustinJRukesHVP1Task.Classes
 
         public static bool updatePart(Part part, int partID)
         {
-            PartInventory.Remove(part); //RemoveAt()
+            PartInventory.RemoveAt(partID); //RemoveAt()
             PartInventory.Insert(partID, part);
             return true;
         }
@@ -63,7 +63,7 @@ namespace AustinJRukesHVP1Task.Classes
 
         public static bool updateProduct(Product product, int productID)
         {
-            ProductInventory.Remove(product);
+            ProductInventory.RemoveAt(productID);
             ProductInventory.Insert(productID, product);
             return true;
         }
