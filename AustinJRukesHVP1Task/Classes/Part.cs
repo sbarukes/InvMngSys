@@ -18,6 +18,8 @@ namespace AustinJRukesHVP1Task.Classes
             Min = min;
             Max = max;
         }
+
+        //Add Constructor Overide
         
         public int PartID { get; set; }
 

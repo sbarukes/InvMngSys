@@ -12,7 +12,7 @@ namespace AustinJRukesHVP1Task.Classes
     {
         private static BindingList<Part> associatedPart = new BindingList<Part>();
 
-        public static BindingList<Part> AssociatedPart { get { return associatedPart; } set { associatedPart = value; } }
+        public static BindingList<Part> AssociatedPart { get { return associatedPart; } set { associatedPart = value; } }  //Use for error checking
 
         public Product(int prID, string n, int inS, decimal price, int min, int max)
         {
@@ -23,6 +23,8 @@ namespace AustinJRukesHVP1Task.Classes
             Min = min;
             Max = max;
         }
+
+        //Add Constructor Overide
 
         public int ProductID { get; set; }
 
