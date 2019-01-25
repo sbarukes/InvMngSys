@@ -258,6 +258,7 @@
             this.Controls.Add(this.label1);
             this.Name = "ModifyProductForm";
             this.Text = "ModifyProductForm";
+            this.Load += new System.EventHandler(this.ModifyProductForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.modifyProductPartDataGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.modifyProductRelatedPArtsDataGrid)).EndInit();
             this.ResumeLayout(false);

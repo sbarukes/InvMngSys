@@ -193,6 +193,7 @@
             this.addProductPartSearchButton.TabIndex = 18;
             this.addProductPartSearchButton.Text = "Search";
             this.addProductPartSearchButton.UseVisualStyleBackColor = true;
+            this.addProductPartSearchButton.Click += new System.EventHandler(this.addProductPartSearchButton_Click);
             // 
             // addProductSaveButton
             // 
@@ -202,6 +203,7 @@
             this.addProductSaveButton.TabIndex = 19;
             this.addProductSaveButton.Text = "Save";
             this.addProductSaveButton.UseVisualStyleBackColor = true;
+            this.addProductSaveButton.Click += new System.EventHandler(this.addProductSaveButton_Click);
             // 
             // addProductCancelButton
             // 
@@ -211,6 +213,7 @@
             this.addProductCancelButton.TabIndex = 20;
             this.addProductCancelButton.Text = "Cancel";
             this.addProductCancelButton.UseVisualStyleBackColor = true;
+            this.addProductCancelButton.Click += new System.EventHandler(this.addProductCancelButton_Click);
             // 
             // addProductDeleteRelationButton
             // 
@@ -220,6 +223,7 @@
             this.addProductDeleteRelationButton.TabIndex = 21;
             this.addProductDeleteRelationButton.Text = "Delete";
             this.addProductDeleteRelationButton.UseVisualStyleBackColor = true;
+            this.addProductDeleteRelationButton.Click += new System.EventHandler(this.addProductDeleteRelationButton_Click);
             // 
             // addProductAddRelationButton
             // 
@@ -229,6 +233,7 @@
             this.addProductAddRelationButton.TabIndex = 22;
             this.addProductAddRelationButton.Text = "Add";
             this.addProductAddRelationButton.UseVisualStyleBackColor = true;
+            this.addProductAddRelationButton.Click += new System.EventHandler(this.addProductAddRelationButton_Click);
             // 
             // AddProductForm
             // 
@@ -258,6 +263,7 @@
             this.Controls.Add(this.addProductIDText);
             this.Name = "AddProductForm";
             this.Text = "AddProductForm";
+            this.Load += new System.EventHandler(this.AddProductForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.addProductPartDataGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.addProductRelatedPArtsDataGrid)).EndInit();
             this.ResumeLayout(false);

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AustinJRukesHVP1Task.Classes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,12 @@ namespace AustinJRukesHVP1Task.Forms
         public ModifyProductForm()
         {
             InitializeComponent();
+        }
+
+        private void ModifyProductForm_Load(object sender, EventArgs e)
+        {
+            modifyProductPartDataGrid.DataSource = Inventory.PartInventory;
+            modifyProductRelatedPArtsDataGrid.DataSource = Product.AssociatedPart;
         }
     }
 }

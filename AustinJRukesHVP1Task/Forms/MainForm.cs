@@ -84,7 +84,7 @@ namespace AustinJRukesHVP1Task
 
         private void productsDeleteButton_Click(object sender, EventArgs e)
         {
-            Inventory.deleteProduct((Product)partsDataGridView.CurrentRow.DataBoundItem);
+            Inventory.deleteProduct((Product)productsDataGridView.CurrentRow.DataBoundItem);
         }
 
         private void productsAddButton_Click(object sender, EventArgs e)
