@@ -73,6 +73,7 @@
             this.modifyProductPartSearchButton.TabIndex = 19;
             this.modifyProductPartSearchButton.Text = "Search";
             this.modifyProductPartSearchButton.UseVisualStyleBackColor = true;
+            this.modifyProductPartSearchButton.Click += new System.EventHandler(this.modifyProductPartSearchButton_Click);
             // 
             // modifyProductSearchText
             // 
@@ -202,6 +203,7 @@
             this.modifyProductDeleteRelationButton.TabIndex = 35;
             this.modifyProductDeleteRelationButton.Text = "Delete";
             this.modifyProductDeleteRelationButton.UseVisualStyleBackColor = true;
+            this.modifyProductDeleteRelationButton.Click += new System.EventHandler(this.modifyProductDeleteRelationButton_Click);
             // 
             // modifyProductSaveButton
             // 
@@ -211,6 +213,7 @@
             this.modifyProductSaveButton.TabIndex = 36;
             this.modifyProductSaveButton.Text = "Save";
             this.modifyProductSaveButton.UseVisualStyleBackColor = true;
+            this.modifyProductSaveButton.Click += new System.EventHandler(this.modifyProductSaveButton_Click);
             // 
             // modifyProductCancelButton
             // 
@@ -220,6 +223,7 @@
             this.modifyProductCancelButton.TabIndex = 37;
             this.modifyProductCancelButton.Text = "Cancel";
             this.modifyProductCancelButton.UseVisualStyleBackColor = true;
+            this.modifyProductCancelButton.Click += new System.EventHandler(this.modifyProductCancelButton_Click);
             // 
             // modifyProductAddRelationButton
             // 
@@ -229,6 +233,7 @@
             this.modifyProductAddRelationButton.TabIndex = 38;
             this.modifyProductAddRelationButton.Text = "Add";
             this.modifyProductAddRelationButton.UseVisualStyleBackColor = true;
+            this.modifyProductAddRelationButton.Click += new System.EventHandler(this.modifyProductAddRelationButton_Click);
             // 
             // ModifyProductForm
             // 

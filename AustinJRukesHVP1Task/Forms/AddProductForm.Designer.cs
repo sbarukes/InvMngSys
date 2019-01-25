@@ -102,6 +102,7 @@
             this.addProductSearchText.Name = "addProductSearchText";
             this.addProductSearchText.Size = new System.Drawing.Size(183, 20);
             this.addProductSearchText.TabIndex = 6;
+            this.addProductSearchText.TextChanged += new System.EventHandler(this.addProductSearchText_TextChanged);
             // 
             // addProductPartDataGrid
             // 

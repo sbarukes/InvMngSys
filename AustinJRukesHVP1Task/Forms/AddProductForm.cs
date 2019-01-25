@@ -58,5 +58,13 @@ namespace AustinJRukesHVP1Task.Forms
         {
             Part searchedPart = Inventory.lookupPart(Convert.ToInt32(addProductSearchText.Text));
         }
+
+        private void addProductSearchText_TextChanged(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(addProductSearchText.Text))
+            {
+                // Finish after search function is implemented
+            }
+        }
     }
 }
