@@ -14,6 +14,12 @@ namespace AustinJRukesHVP1Task.Classes
            CompanyName = cName;
         }
 
+        public Outsourced(string n, int inS, decimal price, int min, int max, string cName)
+            : base (n, inS, price, min, max)
+        {
+            CompanyName = cName;
+        }
+
         public string CompanyName { get; set; }
     }
 }

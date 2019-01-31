@@ -81,6 +81,7 @@
             this.modifyProductSearchText.Name = "modifyProductSearchText";
             this.modifyProductSearchText.Size = new System.Drawing.Size(183, 20);
             this.modifyProductSearchText.TabIndex = 20;
+            this.modifyProductSearchText.TextChanged += new System.EventHandler(this.modifyProductSearchText_TextChanged);
             // 
             // label2
             // 

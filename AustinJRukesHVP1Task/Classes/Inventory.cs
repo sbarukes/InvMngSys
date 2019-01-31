@@ -10,12 +10,16 @@ namespace AustinJRukesHVP1Task.Classes
     class Inventory
     {
         private static BindingList<Part> partInventory = new BindingList<Part>();
+        private static BindingList<Part> tempPartInventory = new BindingList<Part>();
 
         public static BindingList<Part> PartInventory { get { return partInventory; } set { partInventory = value; } }
+        public static BindingList<Part> TempPartInventory { get { return tempPartInventory; } set { tempPartInventory = value; } }
 
         private static BindingList<Product> productInventory = new BindingList<Product>();
+        private static BindingList<Product> tempProductInventory = new BindingList<Product>();
 
         public static BindingList<Product> ProductInventory { get { return productInventory; } set { productInventory = value; } }
+        public static BindingList<Product> TempProductInventory { get { return tempProductInventory; } set { tempProductInventory = value; } }
 
         // Part Methods
         public static void addPart(Part part)

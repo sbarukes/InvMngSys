@@ -13,35 +13,40 @@ namespace AustinJRukesHVP1Task
 {
     public partial class AddPartForm : Form
     {
+        Part addPart;
+
         public AddPartForm()
         {
             InitializeComponent();
+        }
+
+        private void AddPartForm_Load(object sender, EventArgs e)
+        {
+            checkRButton();
         }
 
         private void addPartSaveButton_Click(object sender, EventArgs e)
         {
             if (addPartInhouseButton.Checked)
             {
-                Part alteredPart = new InHouse(Convert.ToInt32(addPartIDText.Text),
-                    addPartNameText.Text,
+                addPart = new InHouse(addPartNameText.Text,
                     Convert.ToInt32(addPartInvAmtText.Text),
                     Convert.ToDecimal(addPartPriceText.Text),
                     Convert.ToInt32(addPartMinText.Text),
                     Convert.ToInt32(addPartMaxText.Text),
                     Convert.ToInt32(addPartCompanyNameOrMachineIDText.Text));
-                Inventory.addPart(alteredPart);
+                Inventory.addPart(addPart);
                 this.Close();
             }
             else
             {
-                Part alteredPart = new Outsourced(Convert.ToInt32(addPartIDText.Text),
-                    addPartNameText.Text,
+                addPart = new Outsourced(addPartNameText.Text,
                     Convert.ToInt32(addPartInvAmtText.Text),
                     Convert.ToDecimal(addPartPriceText.Text),
                     Convert.ToInt32(addPartMinText.Text),
                     Convert.ToInt32(addPartMaxText.Text),
                     addPartCompanyNameOrMachineIDText.Text);
-                Inventory.addPart(alteredPart);
+                Inventory.addPart(addPart);
                 this.Close();
             }
         }
@@ -51,14 +56,26 @@ namespace AustinJRukesHVP1Task
             this.Close();
         }
 
+        private void checkRButton()
+        {
+            if (addPartInhouseButton.Checked)
+            {
+                label8.Text = "MachineID:";
+            }
+            else
+            {
+                label8.Text = "Company Name:";
+            }
+        }
+
         private void addPartInhouseButton_CheckedChanged(object sender, EventArgs e)
         {
-            label8.Text = "Machine ID:";
+            checkRButton();
         }
 
         private void addPartOutsourcedButton_CheckedChanged(object sender, EventArgs e)
         {
-            label8.Text = "Company Name:";
+            checkRButton();
         }
 
     }

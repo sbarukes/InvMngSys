@@ -22,15 +22,13 @@ namespace AustinJRukesHVP1Task
         {
             partsDataGridView.DataSource = Inventory.PartInventory;
             productsDataGridView.DataSource = Inventory.ProductInventory;
-            Inventory.PartInventory.Add(new InHouse(0, "New Part", 100, 20.10m, 10, 15, 135));
-            Inventory.PartInventory.Add(new InHouse(1, "New Part2", 100, 20.99m, 10, 15, 135));
-            Inventory.PartInventory.Add(new Outsourced(2, "New Part3", 100, 25.99m, 15, 50, "New Water Computing"));
-            Inventory.ProductInventory.Add(new Product(0, "New Product", 10, 20.00m, 1, 5));
         }
 
         private void partsSearchButton_Click(object sender, EventArgs e)
         {
             Part searchedPart = Inventory.lookupPart(Convert.ToInt32(partsSearchTextbox.Text));
+            Inventory.TempPartInventory.Add(searchedPart);
+            partsDataGridView.DataSource = Inventory.TempPartInventory;
         }
 
         private void partsAddButton_Click(object sender, EventArgs e)
@@ -80,6 +78,8 @@ namespace AustinJRukesHVP1Task
         private void productsSearchButton_Click(object sender, EventArgs e)
         {
             Product searchedProduct = Inventory.lookupProduct(Convert.ToInt32(productsSearchTextbox.Text));
+            Inventory.TempProductInventory.Add(searchedProduct);
+            productsDataGridView.DataSource = Inventory.TempProductInventory;
         }
 
         private void productsDeleteButton_Click(object sender, EventArgs e)
@@ -109,6 +109,22 @@ namespace AustinJRukesHVP1Task
         private void exitAppButton_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void partsSearchTextbox_TextChanged(object sender, EventArgs e)
+        {
+            if (String.IsNullOrWhiteSpace(partsSearchTextbox.Text)){
+                Inventory.TempPartInventory.Clear();
+                partsDataGridView.DataSource = Inventory.PartInventory;
+            }
+        }
+
+        private void productsSearchTextbox_TextChanged(object sender, EventArgs e)
+        {
+            if (String.IsNullOrWhiteSpace(productsSearchTextbox.Text)){
+                Inventory.TempProductInventory.Clear();
+                productsDataGridView.DataSource = Inventory.ProductInventory;
+            }
         }
     }
 }

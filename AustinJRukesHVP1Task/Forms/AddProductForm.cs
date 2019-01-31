@@ -13,6 +13,8 @@ namespace AustinJRukesHVP1Task.Forms
 {
     public partial class AddProductForm : Form
     {
+        Product productToAdd;
+
         public AddProductForm()
         {
             InitializeComponent();
@@ -41,9 +43,8 @@ namespace AustinJRukesHVP1Task.Forms
 
         private void addProductSaveButton_Click(object sender, EventArgs e)
         {
-            Product productToAdd = new Product
+                productToAdd = new Product
                 (
-                Convert.ToInt32(addProductIDText.Text),
                 addProductNameText.Text,
                 Convert.ToInt32(addProductInvAmtText.Text),
                 Convert.ToDecimal(addProductPriceText.Text),
@@ -57,13 +58,16 @@ namespace AustinJRukesHVP1Task.Forms
         private void addProductPartSearchButton_Click(object sender, EventArgs e)
         {
             Part searchedPart = Inventory.lookupPart(Convert.ToInt32(addProductSearchText.Text));
+            Inventory.TempPartInventory.Add(searchedPart);
+            addProductPartDataGrid.DataSource = Inventory.TempPartInventory;
         }
 
         private void addProductSearchText_TextChanged(object sender, EventArgs e)
         {
             if (String.IsNullOrEmpty(addProductSearchText.Text))
             {
-                // Finish after search function is implemented
+                Inventory.TempPartInventory.Clear();
+                addProductPartDataGrid.DataSource = Inventory.PartInventory;
             }
         }
     }

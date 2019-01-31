@@ -74,6 +74,7 @@
             this.partsSearchTextbox.Name = "partsSearchTextbox";
             this.partsSearchTextbox.Size = new System.Drawing.Size(112, 20);
             this.partsSearchTextbox.TabIndex = 6;
+            this.partsSearchTextbox.TextChanged += new System.EventHandler(this.partsSearchTextbox_TextChanged);
             // 
             // deletePartsButton
             // 
@@ -154,6 +155,7 @@
             this.productsSearchTextbox.Name = "productsSearchTextbox";
             this.productsSearchTextbox.Size = new System.Drawing.Size(112, 20);
             this.productsSearchTextbox.TabIndex = 7;
+            this.productsSearchTextbox.TextChanged += new System.EventHandler(this.productsSearchTextbox_TextChanged);
             // 
             // productsDeleteButton
             // 

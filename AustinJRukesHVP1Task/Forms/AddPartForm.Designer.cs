@@ -61,6 +61,7 @@
             this.addPartInhouseButton.TabStop = true;
             this.addPartInhouseButton.Text = "In-House";
             this.addPartInhouseButton.UseVisualStyleBackColor = true;
+            this.addPartInhouseButton.CheckedChanged += new System.EventHandler(this.addPartInhouseButton_CheckedChanged);
             // 
             // addPartOutsourcedButton
             // 
@@ -72,6 +73,7 @@
             this.addPartOutsourcedButton.TabStop = true;
             this.addPartOutsourcedButton.Text = "Outsourced";
             this.addPartOutsourcedButton.UseVisualStyleBackColor = true;
+            this.addPartOutsourcedButton.CheckedChanged += new System.EventHandler(this.addPartOutsourcedButton_CheckedChanged);
             // 
             // addPartPanel
             // 
@@ -96,6 +98,7 @@
             // 
             // addPartIDText
             // 
+            this.addPartIDText.Enabled = false;
             this.addPartIDText.Location = new System.Drawing.Point(258, 135);
             this.addPartIDText.Name = "addPartIDText";
             this.addPartIDText.Size = new System.Drawing.Size(109, 20);
@@ -205,6 +208,7 @@
             this.addPartSaveButton.TabIndex = 18;
             this.addPartSaveButton.Text = "Save";
             this.addPartSaveButton.UseVisualStyleBackColor = true;
+            this.addPartSaveButton.Click += new System.EventHandler(this.addPartSaveButton_Click);
             // 
             // addPartCancelButton
             // 
@@ -214,6 +218,7 @@
             this.addPartCancelButton.TabIndex = 19;
             this.addPartCancelButton.Text = "Cancel";
             this.addPartCancelButton.UseVisualStyleBackColor = true;
+            this.addPartCancelButton.Click += new System.EventHandler(this.addPartCancelButton_Click);
             // 
             // label3
             // 
@@ -249,6 +254,7 @@
             this.Controls.Add(this.addPartPanel);
             this.Name = "AddPartForm";
             this.Text = "AddPartForm";
+            this.Load += new System.EventHandler(this.AddPartForm_Load);
             this.addPartPanel.ResumeLayout(false);
             this.addPartPanel.PerformLayout();
             this.ResumeLayout(false);

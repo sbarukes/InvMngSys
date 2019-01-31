@@ -24,11 +24,6 @@ namespace AustinJRukesHVP1Task.Forms
             modifyProductRelatedPArtsDataGrid.DataSource = Product.AssociatedPart;
         }
 
-        private void modifyProductPartSearchButton_Click(object sender, EventArgs e)
-        {
-            Part searchedPart = Inventory.lookupPart(Convert.ToInt32(modifyProductSearchText.Text));
-        }
-
         private void modifyProductAddRelationButton_Click(object sender, EventArgs e)
         {
             Product.addAssociatedPart((Part)modifyProductPartDataGrid.CurrentRow.DataBoundItem);
@@ -57,6 +52,19 @@ namespace AustinJRukesHVP1Task.Forms
                 );
             Inventory.updateProduct(productToUpdate, productToUpdate.ProductID);
             this.Close();
+        }
+
+        private void modifyProductPartSearchButton_Click(object sender, EventArgs e)
+        {
+            Part searchedPart = Inventory.lookupPart(Convert.ToInt32(modifyProductSearchText.Text));
+            Inventory.TempPartInventory.Add(searchedPart);
+            modifyProductPartDataGrid.DataSource = Inventory.TempPartInventory;
+        }
+
+        private void modifyProductSearchText_TextChanged(object sender, EventArgs e)
+        {
+            Inventory.TempPartInventory.Clear();
+            modifyProductPartDataGrid.DataSource = Inventory.PartInventory;
         }
     }
 }

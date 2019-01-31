@@ -14,6 +14,12 @@ namespace AustinJRukesHVP1Task.Classes
             MachineID = mID;
         }
 
+        public InHouse(string n, int inS, decimal price, int min, int max, int mID)
+            : base(n, inS, price, min, max)
+        {
+            MachineID = mID;
+        }
+
         public int MachineID { get; set; }
 
     }

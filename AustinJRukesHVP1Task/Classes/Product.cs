@@ -4,12 +4,15 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace AustinJRukesHVP1Task.Classes
 {
     class Product
     {
+        static int counter = -1;
+
         private static BindingList<Part> associatedPart = new BindingList<Part>();
 
         public static BindingList<Part> AssociatedPart { get { return associatedPart; } set { associatedPart = value; } }  //Use for error checking
@@ -17,6 +20,16 @@ namespace AustinJRukesHVP1Task.Classes
         public Product(int prID, string n, int inS, decimal price, int min, int max)
         {
             ProductID = prID;
+            Name = n;
+            InStock = inS;
+            Price = price;
+            Min = min;
+            Max = max;
+        }
+
+        public Product(string n, int inS, decimal price, int min, int max)
+        {
+            ProductID = Interlocked.Increment(ref counter);
             Name = n;
             InStock = inS;
             Price = price;
@@ -47,17 +60,24 @@ namespace AustinJRukesHVP1Task.Classes
 
         public static bool removeAssociatedPart(int associatedPartID)
         {
-
-            foreach (Part part in AssociatedPart)
+            try
             {
-                if (associatedPartID == part.PartID)
+
+                foreach (Part part in AssociatedPart)
                 {
-                    AssociatedPart.Remove(part);
+                    if (associatedPartID == part.PartID)
+                    {
+                        AssociatedPart.Remove(part);
+                    }
+                    else
+                    {
+                        continue;
+                    }
                 }
-                else
-                {
-                    continue;
-                }
+            }
+            catch (Exception ex)
+            {
+
             }
             return true;
         }

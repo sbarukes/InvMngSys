@@ -86,6 +86,7 @@
             // 
             // modifyPartIDText
             // 
+            this.modifyPartIDText.Enabled = false;
             this.modifyPartIDText.Location = new System.Drawing.Point(241, 136);
             this.modifyPartIDText.Name = "modifyPartIDText";
             this.modifyPartIDText.Size = new System.Drawing.Size(109, 20);
