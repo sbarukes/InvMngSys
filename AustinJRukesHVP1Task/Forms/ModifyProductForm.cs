@@ -50,17 +50,29 @@ namespace AustinJRukesHVP1Task.Forms
 
         private void modifyProductSaveButton_Click(object sender, EventArgs e)
         {
-            Product productToUpdate = new Product
-                (
-                Convert.ToInt32(modifyProductIDText.Text),
-                modifyProductNameText.Text,
-                Convert.ToInt32(modifyProductInvAmtText.Text),
-                Convert.ToDecimal(modifyProductPriceText.Text),
-                Convert.ToInt32(modifyProductMinText.Text),
-                Convert.ToInt32(modifyProductMaxText.Text)
-                );
-            Inventory.updateProduct(productToUpdate, productToUpdate.ProductID);
-            this.Close();
+            try
+            {
+                Product productToUpdate = new Product
+                    (
+                    Convert.ToInt32(modifyProductIDText.Text),
+                    modifyProductNameText.Text,
+                    Convert.ToInt32(modifyProductInvAmtText.Text),
+                    Convert.ToDecimal(modifyProductPriceText.Text),
+                    Convert.ToInt32(modifyProductMinText.Text),
+                    Convert.ToInt32(modifyProductMaxText.Text)
+                    );
+                Inventory.updateProduct(productToUpdate, productToUpdate.ProductID);
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Please Make sure the following fields contain the proper values:\n" +
+                    "Name: Alphanumeric\n" +
+                    "Inventory Amount: Number \n" +
+                    "Price: Decimal\n" +
+                    "Min: Number\n" +
+                    "Max: Number");
+            }
         }
 
         private void modifyProductPartSearchButton_Click(object sender, EventArgs e)

@@ -27,27 +27,41 @@ namespace AustinJRukesHVP1Task
 
         private void addPartSaveButton_Click(object sender, EventArgs e)
         {
-            if (addPartInhouseButton.Checked)
+            try
             {
-                addPart = new InHouse(addPartNameText.Text,
-                    Convert.ToInt32(addPartInvAmtText.Text),
-                    Convert.ToDecimal(addPartPriceText.Text),
-                    Convert.ToInt32(addPartMinText.Text),
-                    Convert.ToInt32(addPartMaxText.Text),
-                    Convert.ToInt32(addPartCompanyNameOrMachineIDText.Text));
-                Inventory.addPart(addPart);
-                this.Close();
+                if (addPartInhouseButton.Checked)
+                {
+                    addPart = new InHouse(addPartNameText.Text,
+                        Convert.ToInt32(addPartInvAmtText.Text),
+                        Convert.ToDecimal(addPartPriceText.Text),
+                        Convert.ToInt32(addPartMinText.Text),
+                        Convert.ToInt32(addPartMaxText.Text),
+                        Convert.ToInt32(addPartCompanyNameOrMachineIDText.Text));
+                    Inventory.addPart(addPart);
+                    this.Close();
+                }
+                else
+                {
+                    addPart = new Outsourced(addPartNameText.Text,
+                        Convert.ToInt32(addPartInvAmtText.Text),
+                        Convert.ToDecimal(addPartPriceText.Text),
+                        Convert.ToInt32(addPartMinText.Text),
+                        Convert.ToInt32(addPartMaxText.Text),
+                        addPartCompanyNameOrMachineIDText.Text);
+                    Inventory.addPart(addPart);
+                    this.Close();
+                }
             }
-            else
+            catch (Exception ex)
             {
-                addPart = new Outsourced(addPartNameText.Text,
-                    Convert.ToInt32(addPartInvAmtText.Text),
-                    Convert.ToDecimal(addPartPriceText.Text),
-                    Convert.ToInt32(addPartMinText.Text),
-                    Convert.ToInt32(addPartMaxText.Text),
-                    addPartCompanyNameOrMachineIDText.Text);
-                Inventory.addPart(addPart);
-                this.Close();
+                MessageBox.Show("Please Make sure the following fields contain the proper values:\n" +
+                    "Name: Alphanumeric\n" +
+                    "Inventory Amount: Number \n" +
+                    "Price: Decimal\n" +
+                    "Min: Number\n" +
+                    "Max: Number\n" +
+                    "Machine ID: Number\n" +
+                    "Company Name: Alphanumeric");
             }
         }
 

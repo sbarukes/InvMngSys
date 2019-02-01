@@ -26,29 +26,43 @@ namespace AustinJRukesHVP1Task
 
         private void modifyPartSaveButton_Click(object sender, EventArgs e)
         {
-            if (modifyPartInhouseButton.Checked)
+            try
             {
-                Part alteredPart = new InHouse(Convert.ToInt32(modifyPartIDText.Text),
-                    modifyPartNameText.Text,
-                    Convert.ToInt32(modifyPartInvAmtText.Text),
-                    Convert.ToDecimal(modifyPartPriceText.Text),
-                    Convert.ToInt32(modifyPartMinText.Text),
-                    Convert.ToInt32(modifyPartMaxText.Text),
-                    Convert.ToInt32(modifyPartCompanyNameOrMIDText.Text));
-                Inventory.updatePart(alteredPart, alteredPart.PartID);
-                this.Close();
+                if (modifyPartInhouseButton.Checked)
+                {
+                    Part alteredPart = new InHouse(Convert.ToInt32(modifyPartIDText.Text),
+                        modifyPartNameText.Text,
+                        Convert.ToInt32(modifyPartInvAmtText.Text),
+                        Convert.ToDecimal(modifyPartPriceText.Text),
+                        Convert.ToInt32(modifyPartMinText.Text),
+                        Convert.ToInt32(modifyPartMaxText.Text),
+                        Convert.ToInt32(modifyPartCompanyNameOrMIDText.Text));
+                    Inventory.updatePart(alteredPart, alteredPart.PartID);
+                    this.Close();
+                }
+                else
+                {
+                    Part alteredPart = new Outsourced(Convert.ToInt32(modifyPartIDText.Text),
+                        modifyPartNameText.Text,
+                        Convert.ToInt32(modifyPartInvAmtText.Text),
+                        Convert.ToDecimal(modifyPartPriceText.Text),
+                        Convert.ToInt32(modifyPartMinText.Text),
+                        Convert.ToInt32(modifyPartMaxText.Text),
+                        modifyPartCompanyNameOrMIDText.Text);
+                    Inventory.updatePart(alteredPart, alteredPart.PartID);
+                    this.Close();
+                }
             }
-            else
+            catch(Exception ex)
             {
-                Part alteredPart = new Outsourced(Convert.ToInt32(modifyPartIDText.Text),
-                    modifyPartNameText.Text,
-                    Convert.ToInt32(modifyPartInvAmtText.Text),
-                    Convert.ToDecimal(modifyPartPriceText.Text),
-                    Convert.ToInt32(modifyPartMinText.Text),
-                    Convert.ToInt32(modifyPartMaxText.Text),
-                    modifyPartCompanyNameOrMIDText.Text);
-                Inventory.updatePart(alteredPart, alteredPart.PartID);
-                this.Close();
+                MessageBox.Show("Please Make sure the following fields contain the proper values:\n" +
+                    "Name: Alphanumeric\n" +
+                    "Inventory Amount: Number \n" +
+                    "Price: Decimal\n" +
+                    "Min: Number\n" +
+                    "Max: Number\n" +
+                    "Machine ID: Number\n" +
+                    "Company Name: Alphanumeric");
             }
         }
 

@@ -52,6 +52,8 @@ namespace AustinJRukesHVP1Task.Forms
 
         private void addProductSaveButton_Click(object sender, EventArgs e)
         {
+            try
+            {
                 productToAdd = new Product
                 (
                 addProductNameText.Text,
@@ -60,8 +62,18 @@ namespace AustinJRukesHVP1Task.Forms
                 Convert.ToInt32(addProductMinText.Text),
                 Convert.ToInt32(addProductMaxText.Text)
                 );
-            Inventory.addProduct(productToAdd);
-            this.Close();
+                Inventory.addProduct(productToAdd);
+                this.Close();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Please Make sure the following fields contain the proper values:\n" +
+                    "Name: Alphanumeric\n" +
+                    "Inventory Amount: Number \n" +
+                    "Price: Decimal\n" +
+                    "Min: Number\n" +
+                    "Max: Number");
+            }
         }
 
         private void addProductPartSearchButton_Click(object sender, EventArgs e)
