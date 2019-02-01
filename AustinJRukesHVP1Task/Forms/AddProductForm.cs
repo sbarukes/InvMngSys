@@ -28,7 +28,16 @@ namespace AustinJRukesHVP1Task.Forms
 
         private void addProductDeleteRelationButton_Click(object sender, EventArgs e)
         {
-            Product.removeAssociatedPart(Convert.ToInt32(addProductRelatedPArtsDataGrid.CurrentRow.Cells[0].Value));
+            DialogResult result = MessageBox.Show("Are you sure you want to delete this product?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (result == DialogResult.Yes)
+            {
+                Product.removeAssociatedPart(Convert.ToInt32(addProductRelatedPArtsDataGrid.CurrentRow.Cells[0].Value));
+            }
+            else
+            {
+                // Do Nothing - Break Method
+            }
         }
 
         private void addProductAddRelationButton_Click(object sender, EventArgs e)

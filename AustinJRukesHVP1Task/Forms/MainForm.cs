@@ -72,7 +72,16 @@ namespace AustinJRukesHVP1Task
 
         private void deletePartsButton_Click(object sender, EventArgs e)
         {
-            Inventory.deletePart((Part)partsDataGridView.CurrentRow.DataBoundItem);
+            DialogResult result = MessageBox.Show("Are you sure you want to delete this part?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (result == DialogResult.Yes)
+            {
+                Inventory.deletePart((Part)partsDataGridView.CurrentRow.DataBoundItem);
+            }
+            else
+            {
+                //Do Nothing - Breaks Method
+            }
         }
 
         private void productsSearchButton_Click(object sender, EventArgs e)
@@ -84,7 +93,16 @@ namespace AustinJRukesHVP1Task
 
         private void productsDeleteButton_Click(object sender, EventArgs e)
         {
-            Inventory.deleteProduct((Product)productsDataGridView.CurrentRow.DataBoundItem);
+            DialogResult result = MessageBox.Show("Are you sure you want to delete this product?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (result == DialogResult.Yes)
+            {
+                Inventory.deleteProduct((Product)productsDataGridView.CurrentRow.DataBoundItem);
+            }
+            else
+            {
+                //Do Nothing - Breaks Method
+            }
         }
 
         private void productsAddButton_Click(object sender, EventArgs e)
