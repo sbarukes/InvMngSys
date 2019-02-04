@@ -29,27 +29,33 @@ namespace AustinJRukesHVP1Task
         {
             try
             {
-                if (addPartInhouseButton.Checked)
+                if ((Convert.ToInt32(addPartMinText.Text) < Convert.ToInt32(addPartMaxText.Text)) && (Convert.ToInt32(addPartMinText.Text) < Convert.ToInt32(addPartInvAmtText.Text)) && (Convert.ToInt32(addPartInvAmtText.Text) <= Convert.ToInt32(addPartMaxText.Text)))
                 {
-                    addPart = new InHouse(addPartNameText.Text,
-                        Convert.ToInt32(addPartInvAmtText.Text),
-                        Convert.ToDecimal(addPartPriceText.Text),
-                        Convert.ToInt32(addPartMinText.Text),
-                        Convert.ToInt32(addPartMaxText.Text),
-                        Convert.ToInt32(addPartCompanyNameOrMachineIDText.Text));
+                    if (addPartInhouseButton.Checked)
+                    {
+                        addPart = new InHouse(addPartNameText.Text,
+                            Convert.ToInt32(addPartInvAmtText.Text),
+                            Convert.ToDecimal(addPartPriceText.Text),
+                            Convert.ToInt32(addPartMinText.Text),
+                            Convert.ToInt32(addPartMaxText.Text),
+                            Convert.ToInt32(addPartCompanyNameOrMachineIDText.Text));
+                    }
+                    else
+                    {
+                        addPart = new Outsourced(addPartNameText.Text,
+                            Convert.ToInt32(addPartInvAmtText.Text),
+                            Convert.ToDecimal(addPartPriceText.Text),
+                            Convert.ToInt32(addPartMinText.Text),
+                            Convert.ToInt32(addPartMaxText.Text),
+                            addPartCompanyNameOrMachineIDText.Text);
+                    }
                     Inventory.addPart(addPart);
                     this.Close();
                 }
                 else
                 {
-                    addPart = new Outsourced(addPartNameText.Text,
-                        Convert.ToInt32(addPartInvAmtText.Text),
-                        Convert.ToDecimal(addPartPriceText.Text),
-                        Convert.ToInt32(addPartMinText.Text),
-                        Convert.ToInt32(addPartMaxText.Text),
-                        addPartCompanyNameOrMachineIDText.Text);
-                    Inventory.addPart(addPart);
-                    this.Close();
+                    Exception exx = new Exception("Min must be less than Max and Inventory Amount must be in between the two");
+                    MessageBox.Show(exx.Message);
                 }
             }
             catch (Exception ex)

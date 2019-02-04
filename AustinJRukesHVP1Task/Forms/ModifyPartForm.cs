@@ -13,6 +13,8 @@ namespace AustinJRukesHVP1Task
 {
     public partial class ModifyPartForm : Form
     {
+        Part alteredPart;
+
         public ModifyPartForm()
         {
             InitializeComponent();
@@ -21,36 +23,42 @@ namespace AustinJRukesHVP1Task
 
         private void ModifyPartForm_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         private void modifyPartSaveButton_Click(object sender, EventArgs e)
         {
             try
             {
-                if (modifyPartInhouseButton.Checked)
+                if ((Convert.ToInt32(modifyPartMinText.Text) < Convert.ToInt32(modifyPartMaxText.Text)) && (Convert.ToInt32(modifyPartMinText.Text) < Convert.ToInt32(modifyPartInvAmtText.Text)) && (Convert.ToInt32(modifyPartInvAmtText.Text) <= Convert.ToInt32(modifyPartMaxText.Text)))
                 {
-                    Part alteredPart = new InHouse(Convert.ToInt32(modifyPartIDText.Text),
-                        modifyPartNameText.Text,
-                        Convert.ToInt32(modifyPartInvAmtText.Text),
-                        Convert.ToDecimal(modifyPartPriceText.Text),
-                        Convert.ToInt32(modifyPartMinText.Text),
-                        Convert.ToInt32(modifyPartMaxText.Text),
-                        Convert.ToInt32(modifyPartCompanyNameOrMIDText.Text));
+                    if (modifyPartInhouseButton.Checked)
+                    {
+                        alteredPart = new InHouse(Convert.ToInt32(modifyPartIDText.Text),
+                            modifyPartNameText.Text,
+                            Convert.ToInt32(modifyPartInvAmtText.Text),
+                            Convert.ToDecimal(modifyPartPriceText.Text),
+                            Convert.ToInt32(modifyPartMinText.Text),
+                            Convert.ToInt32(modifyPartMaxText.Text),
+                            Convert.ToInt32(modifyPartCompanyNameOrMIDText.Text));
+                    }
+                    else
+                    {
+                        alteredPart = new Outsourced(Convert.ToInt32(modifyPartIDText.Text),
+                           modifyPartNameText.Text,
+                           Convert.ToInt32(modifyPartInvAmtText.Text),
+                           Convert.ToDecimal(modifyPartPriceText.Text),
+                           Convert.ToInt32(modifyPartMinText.Text),
+                           Convert.ToInt32(modifyPartMaxText.Text),
+                           modifyPartCompanyNameOrMIDText.Text);
+                    }
                     Inventory.updatePart(alteredPart, alteredPart.PartID);
                     this.Close();
                 }
                 else
                 {
-                    Part alteredPart = new Outsourced(Convert.ToInt32(modifyPartIDText.Text),
-                        modifyPartNameText.Text,
-                        Convert.ToInt32(modifyPartInvAmtText.Text),
-                        Convert.ToDecimal(modifyPartPriceText.Text),
-                        Convert.ToInt32(modifyPartMinText.Text),
-                        Convert.ToInt32(modifyPartMaxText.Text),
-                        modifyPartCompanyNameOrMIDText.Text);
-                    Inventory.updatePart(alteredPart, alteredPart.PartID);
-                    this.Close();
+                    Exception exx = new Exception("Min must be less than Max and Inventory Amount must be in between the two");
+                    MessageBox.Show(exx.Message);
                 }
             }
             catch(Exception ex)

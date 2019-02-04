@@ -54,16 +54,23 @@ namespace AustinJRukesHVP1Task.Forms
         {
             try
             {
-                productToAdd = new Product
-                (
-                addProductNameText.Text,
-                Convert.ToInt32(addProductInvAmtText.Text),
-                Convert.ToDecimal(addProductPriceText.Text),
-                Convert.ToInt32(addProductMinText.Text),
-                Convert.ToInt32(addProductMaxText.Text)
-                );
-                Inventory.addProduct(productToAdd);
-                this.Close();
+                if ((Convert.ToInt32(addProductMinText.Text) < Convert.ToInt32(addProductMaxText.Text)) && (Convert.ToInt32(addProductMinText.Text) < Convert.ToInt32(addProductInvAmtText.Text)) && (Convert.ToInt32(addProductInvAmtText.Text) <= Convert.ToInt32(addProductMaxText.Text))) {
+                    productToAdd = new Product
+                    (
+                    addProductNameText.Text,
+                    Convert.ToInt32(addProductInvAmtText.Text),
+                    Convert.ToDecimal(addProductPriceText.Text),
+                    Convert.ToInt32(addProductMinText.Text),
+                    Convert.ToInt32(addProductMaxText.Text)
+                    );
+                    Inventory.addProduct(productToAdd);
+                    this.Close();
+                }
+                else
+                {
+                    Exception exx = new Exception("Min must be less than Max and Inventory Amount must be in between the two");
+                    MessageBox.Show(exx.Message);
+                }
             }
             catch(Exception ex)
             {

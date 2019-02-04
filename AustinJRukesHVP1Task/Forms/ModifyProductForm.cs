@@ -52,7 +52,9 @@ namespace AustinJRukesHVP1Task.Forms
         {
             try
             {
-                Product productToUpdate = new Product
+                if ((Convert.ToInt32(modifyProductMinText.Text) < Convert.ToInt32(modifyProductMaxText.Text)) && (Convert.ToInt32(modifyProductMinText.Text) < Convert.ToInt32(modifyProductInvAmtText.Text)) && (Convert.ToInt32(modifyProductInvAmtText.Text) <= Convert.ToInt32(modifyProductMaxText.Text)))
+                {
+                    Product productToUpdate = new Product
                     (
                     Convert.ToInt32(modifyProductIDText.Text),
                     modifyProductNameText.Text,
@@ -61,8 +63,14 @@ namespace AustinJRukesHVP1Task.Forms
                     Convert.ToInt32(modifyProductMinText.Text),
                     Convert.ToInt32(modifyProductMaxText.Text)
                     );
-                Inventory.updateProduct(productToUpdate, productToUpdate.ProductID);
-                this.Close();
+                    Inventory.updateProduct(productToUpdate, productToUpdate.ProductID);
+                    this.Close();
+                }
+                else
+                {
+                    Exception exx = new Exception("Min must be less than Max and Inventory Amount must be in between the two");
+                    MessageBox.Show(exx.Message);
+                }
             }
             catch (Exception ex)
             {
