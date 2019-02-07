@@ -85,9 +85,24 @@ namespace AustinJRukesHVP1Task.Forms
 
         private void addProductPartSearchButton_Click(object sender, EventArgs e)
         {
-            Part searchedPart = Inventory.lookupPart(Convert.ToInt32(addProductSearchText.Text));
-            Inventory.TempPartInventory.Add(searchedPart);
-            addProductPartDataGrid.DataSource = Inventory.TempPartInventory;
+            try
+            {
+                if (Convert.ToInt32(addProductSearchText.Text) >= 0)
+                {
+                    Part searchedPart = Inventory.lookupPart(Convert.ToInt32(addProductSearchText.Text));
+                    Inventory.TempPartInventory.Add(searchedPart);
+                    addProductPartDataGrid.DataSource = Inventory.TempPartInventory;
+                }
+                else
+                {
+                    MessageBox.Show("ID must be greater than or equal to 0");
+                }
+            }
+
+            catch (FormatException fe)
+            {
+                MessageBox.Show("Please enter ID of Part to search.");
+            }
         }
 
         private void addProductSearchText_TextChanged(object sender, EventArgs e)

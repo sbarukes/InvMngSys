@@ -26,9 +26,23 @@ namespace AustinJRukesHVP1Task
 
         private void partsSearchButton_Click(object sender, EventArgs e)
         {
-            Part searchedPart = Inventory.lookupPart(Convert.ToInt32(partsSearchTextbox.Text));
-            Inventory.TempPartInventory.Add(searchedPart);
-            partsDataGridView.DataSource = Inventory.TempPartInventory;
+            try
+            {
+                if (Convert.ToInt32(partsSearchTextbox.Text) >= 0)
+                {
+                    Part searchedPart = Inventory.lookupPart(Convert.ToInt32(partsSearchTextbox.Text));
+                    Inventory.TempPartInventory.Add(searchedPart);
+                    partsDataGridView.DataSource = Inventory.TempPartInventory;
+                }
+                else
+                {
+                    MessageBox.Show("ID must be greater than or equal to 0");
+                }
+            }
+            catch (FormatException fe)
+            {
+                MessageBox.Show("Please enter the ID of search Product");
+            }
         }
 
         private void partsAddButton_Click(object sender, EventArgs e)
@@ -86,9 +100,22 @@ namespace AustinJRukesHVP1Task
 
         private void productsSearchButton_Click(object sender, EventArgs e)
         {
-            Product searchedProduct = Inventory.lookupProduct(Convert.ToInt32(productsSearchTextbox.Text));
-            Inventory.TempProductInventory.Add(searchedProduct);
-            productsDataGridView.DataSource = Inventory.TempProductInventory;
+            try
+            {
+                if (Convert.ToInt32(productsSearchTextbox.Text) >= 0) {
+                    Product searchedProduct = Inventory.lookupProduct(Convert.ToInt32(productsSearchTextbox.Text));
+                    Inventory.TempProductInventory.Add(searchedProduct);
+                    productsDataGridView.DataSource = Inventory.TempProductInventory;
+                }
+                else
+                {
+                    MessageBox.Show("ID must be greater than or equal to 0");
+                }
+            }
+            catch(FormatException fe)
+            {
+                MessageBox.Show("Please enter the ID of search Product");
+            }
         }
 
         private void productsDeleteButton_Click(object sender, EventArgs e)
