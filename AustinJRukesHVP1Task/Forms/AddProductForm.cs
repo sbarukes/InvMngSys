@@ -23,7 +23,7 @@ namespace AustinJRukesHVP1Task.Forms
         private void AddProductForm_Load(object sender, EventArgs e)
         {
             addProductPartDataGrid.DataSource = Inventory.PartInventory;
-            addProductRelatedPArtsDataGrid.DataSource = Product.AssociatedPart;
+            addProductRelatedPArtsDataGrid.DataSource = productToAdd.AssociatedPart;
         }
 
         private void addProductDeleteRelationButton_Click(object sender, EventArgs e)
@@ -32,7 +32,7 @@ namespace AustinJRukesHVP1Task.Forms
 
             if (result == DialogResult.Yes)
             {
-                Product.removeAssociatedPart(Convert.ToInt32(addProductRelatedPArtsDataGrid.CurrentRow.Cells[0].Value));
+                productToAdd.removeAssociatedPart(Convert.ToInt32(addProductRelatedPArtsDataGrid.CurrentRow.Cells[0].Value));
             }
             else
             {
@@ -42,7 +42,7 @@ namespace AustinJRukesHVP1Task.Forms
 
         private void addProductAddRelationButton_Click(object sender, EventArgs e)
         {
-            Product.addAssociatedPart((Part)addProductPartDataGrid.CurrentRow.DataBoundItem);
+            productToAdd.addAssociatedPart((Part)addProductPartDataGrid.CurrentRow.DataBoundItem);
         }
 
         private void addProductCancelButton_Click(object sender, EventArgs e)

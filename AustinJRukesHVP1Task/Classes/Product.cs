@@ -13,12 +13,13 @@ namespace AustinJRukesHVP1Task.Classes
     {
         static int counter = -1;
 
-        private static BindingList<Part> associatedPart = new BindingList<Part>();
+        private BindingList<Part> associatedPart = new BindingList<Part>();
 
-        public static BindingList<Part> AssociatedPart { get { return associatedPart; } set { associatedPart = value; } }  //Use for error checking
+        public BindingList<Part> AssociatedPart { get { return associatedPart; } set { associatedPart = value; } }  //Use for error checking
 
         public Product(int prID, string n, int inS, decimal price, int min, int max)
         {
+            AssociatedPart = new BindingList<Part>();
             ProductID = prID;
             Name = n;
             InStock = inS;
@@ -29,6 +30,7 @@ namespace AustinJRukesHVP1Task.Classes
 
         public Product(string n, int inS, decimal price, int min, int max)
         {
+            AssociatedPart = new BindingList<Part>();
             ProductID = Interlocked.Increment(ref counter);
             Name = n;
             InStock = inS;
@@ -53,12 +55,12 @@ namespace AustinJRukesHVP1Task.Classes
 
         //methods
 
-        public static void addAssociatedPart(Part newAssociatedPart)
+        public void addAssociatedPart(Part newAssociatedPart)
         {
             AssociatedPart.Add(newAssociatedPart);
         }
 
-        public static bool removeAssociatedPart(int associatedPartID)
+        public bool removeAssociatedPart(int associatedPartID)
         {
             try
             {
@@ -82,7 +84,7 @@ namespace AustinJRukesHVP1Task.Classes
             return true;
         }
 
-        public static Part lookupAssociatedPart(int associatedPartID)
+        public Part lookupAssociatedPart(int associatedPartID)
         {
             foreach (Part part in AssociatedPart)
             {

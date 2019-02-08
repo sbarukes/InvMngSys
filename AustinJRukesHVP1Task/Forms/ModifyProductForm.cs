@@ -13,6 +13,8 @@ namespace AustinJRukesHVP1Task.Forms
 {
     public partial class ModifyProductForm : Form
     {
+        Product productToModify;
+
         public ModifyProductForm()
         {
             InitializeComponent();
@@ -21,12 +23,12 @@ namespace AustinJRukesHVP1Task.Forms
         private void ModifyProductForm_Load(object sender, EventArgs e)
         {
             modifyProductPartDataGrid.DataSource = Inventory.PartInventory;
-            modifyProductRelatedPArtsDataGrid.DataSource = Product.AssociatedPart;
+            modifyProductRelatedPArtsDataGrid.DataSource = productToModify.AssociatedPart;
         }
 
         private void modifyProductAddRelationButton_Click(object sender, EventArgs e)
         {
-            Product.addAssociatedPart((Part)modifyProductPartDataGrid.CurrentRow.DataBoundItem);
+            productToModify.addAssociatedPart((Part)modifyProductPartDataGrid.CurrentRow.DataBoundItem);
         }
 
         private void modifyProductDeleteRelationButton_Click(object sender, EventArgs e)
@@ -35,7 +37,7 @@ namespace AustinJRukesHVP1Task.Forms
 
             if (result == DialogResult.Yes)
             {
-                Product.removeAssociatedPart(Convert.ToInt32(modifyProductRelatedPArtsDataGrid.CurrentRow.Cells[0].Value));
+                productToModify.removeAssociatedPart(Convert.ToInt32(modifyProductRelatedPArtsDataGrid.CurrentRow.Cells[0].Value));
             }
             else
             {
