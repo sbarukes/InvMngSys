@@ -21,7 +21,7 @@ namespace AustinJRukesHVP1Task.Classes
         public static BindingList<Product> ProductInventory { get { return productInventory; } set { productInventory = value; } }
         public static BindingList<Product> TempProductInventory { get { return tempProductInventory; } set { tempProductInventory = value; } }
 
-        Product cuurentProduct;
+        public static Product currentProduct;
 
         // Part Methods
         public static void addPart(Part part)

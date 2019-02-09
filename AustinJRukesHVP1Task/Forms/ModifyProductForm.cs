@@ -23,12 +23,12 @@ namespace AustinJRukesHVP1Task.Forms
         private void ModifyProductForm_Load(object sender, EventArgs e)
         {
             modifyProductPartDataGrid.DataSource = Inventory.PartInventory;
-            modifyProductRelatedPArtsDataGrid.DataSource = productToModify.AssociatedPart;
+            modifyProductRelatedPArtsDataGrid.DataSource = Inventory.currentProduct.AssociatedPart;
         }
 
         private void modifyProductAddRelationButton_Click(object sender, EventArgs e)
         {
-            productToModify.addAssociatedPart((Part)modifyProductPartDataGrid.CurrentRow.DataBoundItem);
+            Inventory.currentProduct.addAssociatedPart((Part)modifyProductPartDataGrid.CurrentRow.DataBoundItem);
         }
 
         private void modifyProductDeleteRelationButton_Click(object sender, EventArgs e)
@@ -37,7 +37,7 @@ namespace AustinJRukesHVP1Task.Forms
 
             if (result == DialogResult.Yes)
             {
-                productToModify.removeAssociatedPart(Convert.ToInt32(modifyProductRelatedPArtsDataGrid.CurrentRow.Cells[0].Value));
+                Inventory.currentProduct.removeAssociatedPart(Convert.ToInt32(modifyProductRelatedPArtsDataGrid.CurrentRow.Cells[0].Value));
             }
             else
             {
@@ -56,16 +56,13 @@ namespace AustinJRukesHVP1Task.Forms
             {
                 if ((Convert.ToInt32(modifyProductMinText.Text) < Convert.ToInt32(modifyProductMaxText.Text)) && (Convert.ToInt32(modifyProductMinText.Text) < Convert.ToInt32(modifyProductInvAmtText.Text)) && (Convert.ToInt32(modifyProductInvAmtText.Text) <= Convert.ToInt32(modifyProductMaxText.Text)))
                 {
-                    Product productToUpdate = new Product
-                    (
-                    Convert.ToInt32(modifyProductIDText.Text),
-                    modifyProductNameText.Text,
-                    Convert.ToInt32(modifyProductInvAmtText.Text),
-                    Convert.ToDecimal(modifyProductPriceText.Text),
-                    Convert.ToInt32(modifyProductMinText.Text),
-                    Convert.ToInt32(modifyProductMaxText.Text)
-                    );
-                    Inventory.updateProduct(productToUpdate, productToUpdate.ProductID);
+                    Inventory.currentProduct.ProductID = Convert.ToInt32(modifyProductIDText.Text);
+                    Inventory.currentProduct.Name = modifyProductNameText.Text;
+                    Inventory.currentProduct.InStock = Convert.ToInt32(modifyProductInvAmtText.Text);
+                    Inventory.currentProduct.Price = Convert.ToDecimal(modifyProductPriceText.Text);
+                    Inventory.currentProduct.Min = Convert.ToInt32(modifyProductMinText.Text);
+                    Inventory.currentProduct.Max = Convert.ToInt32(modifyProductMaxText.Text);
+                    Inventory.updateProduct(Inventory.currentProduct, Inventory.currentProduct.ProductID);
                     this.Close();
                 }
                 else

@@ -121,10 +121,18 @@ namespace AustinJRukesHVP1Task
         private void productsDeleteButton_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Are you sure you want to delete this product?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            Inventory.currentProduct = (Product)productsDataGridView.CurrentRow.DataBoundItem;
 
             if (result == DialogResult.Yes)
             {
-                Inventory.deleteProduct((Product)productsDataGridView.CurrentRow.DataBoundItem);
+                if (Inventory.currentProduct.AssociatedPart.Count == 0)
+                {
+                    Inventory.deleteProduct((Product)productsDataGridView.CurrentRow.DataBoundItem);
+                }
+                else
+                {
+                    MessageBox.Show("This Product has a part associated.");
+                }
             }
             else
             {
@@ -140,6 +148,7 @@ namespace AustinJRukesHVP1Task
 
         private void productsModifyButton_Click(object sender, EventArgs e)
         {
+            Inventory.currentProduct = (Product)productsDataGridView.CurrentRow.DataBoundItem;
             ModifyProductForm mProductForm = new ModifyProductForm();
             mProductForm.modifyProductIDText.Text = productsDataGridView.CurrentRow.Cells[0].Value.ToString();
             mProductForm.modifyProductNameText.Text = productsDataGridView.CurrentRow.Cells[1].Value.ToString();

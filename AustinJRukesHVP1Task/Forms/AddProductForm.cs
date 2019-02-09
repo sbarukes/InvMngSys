@@ -22,8 +22,9 @@ namespace AustinJRukesHVP1Task.Forms
 
         private void AddProductForm_Load(object sender, EventArgs e)
         {
+            Inventory.currentProduct = new Product("", 0, 0.1m, 0, 1);
             addProductPartDataGrid.DataSource = Inventory.PartInventory;
-            addProductRelatedPArtsDataGrid.DataSource = productToAdd.AssociatedPart;
+            addProductRelatedPArtsDataGrid.DataSource = Inventory.currentProduct.AssociatedPart;
         }
 
         private void addProductDeleteRelationButton_Click(object sender, EventArgs e)
@@ -32,7 +33,7 @@ namespace AustinJRukesHVP1Task.Forms
 
             if (result == DialogResult.Yes)
             {
-                productToAdd.removeAssociatedPart(Convert.ToInt32(addProductRelatedPArtsDataGrid.CurrentRow.Cells[0].Value));
+                Inventory.currentProduct.removeAssociatedPart(Convert.ToInt32(addProductRelatedPArtsDataGrid.CurrentRow.Cells[0].Value));
             }
             else
             {
@@ -42,7 +43,7 @@ namespace AustinJRukesHVP1Task.Forms
 
         private void addProductAddRelationButton_Click(object sender, EventArgs e)
         {
-            productToAdd.addAssociatedPart((Part)addProductPartDataGrid.CurrentRow.DataBoundItem);
+            Inventory.currentProduct.addAssociatedPart((Part)addProductPartDataGrid.CurrentRow.DataBoundItem);
         }
 
         private void addProductCancelButton_Click(object sender, EventArgs e)
@@ -55,15 +56,13 @@ namespace AustinJRukesHVP1Task.Forms
             try
             {
                 if ((Convert.ToInt32(addProductMinText.Text) < Convert.ToInt32(addProductMaxText.Text)) && (Convert.ToInt32(addProductMinText.Text) < Convert.ToInt32(addProductInvAmtText.Text)) && (Convert.ToInt32(addProductInvAmtText.Text) <= Convert.ToInt32(addProductMaxText.Text))) {
-                    productToAdd = new Product
-                    (
-                    addProductNameText.Text,
-                    Convert.ToInt32(addProductInvAmtText.Text),
-                    Convert.ToDecimal(addProductPriceText.Text),
-                    Convert.ToInt32(addProductMinText.Text),
-                    Convert.ToInt32(addProductMaxText.Text)
-                    );
-                    Inventory.addProduct(productToAdd);
+
+                    Inventory.currentProduct.Name = addProductNameText.Text;
+                    Inventory.currentProduct.InStock = Convert.ToInt32(addProductInvAmtText.Text);
+                    Inventory.currentProduct.Price = Convert.ToDecimal(addProductPriceText.Text);
+                    Inventory.currentProduct.Min = Convert.ToInt32(addProductMinText.Text);
+                    Inventory.currentProduct.Max = Convert.ToInt32(addProductMaxText.Text);
+                    Inventory.addProduct(Inventory.currentProduct);
                     this.Close();
                 }
                 else
